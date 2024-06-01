@@ -24,7 +24,17 @@ class Stock(Asset):
         self.ticker = ticker
 
     def __str__(self):
-        return super().__str__()
+        return f"{self.ticker} {self.company} -- ${self.price}"
+    
+    def __ge__(self,value):
+        if not isinstance(value, Stock):
+            raise ValueError("{value} has to be a Stock")
+        return self.price >= value.price
+    
+    def __lt__(self,value): 
+        if not isinstance(value, Stock):
+            raise ValueError("{value} has to be a Stock")
+        return self.price < value.price 
 
 
 class Bond(Asset):
@@ -35,8 +45,19 @@ class Bond(Asset):
         self.yieldamt = yieldamt
 
     def __str__(self):
-        return super().__str__()
-
+        return f"{self.description} {self.duration}yr {self.yieldamt}% -- ${self.price}"
+    
+    def __ge__(self,value): 
+        if not isinstance(value, Bond):
+            raise ValueError("The value has to be a Bond")
+        return self.price >= value.price
+    
+    def __lt__(self,value):
+        if not isinstance(value, Bond):
+            raise ValueError("The value has to be a Bond")
+        return self.price < value.price 
+    
+    
 # ~~~~~~~~~ TEST CODE ~~~~~~~~~
 stocks = [
     Stock("MSFT", 342.0, "Microsoft Corp"),
