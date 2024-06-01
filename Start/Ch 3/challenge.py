@@ -23,6 +23,9 @@ class Stock(Asset):
         self.company = company
         self.ticker = ticker
 
+    def __str__(self):
+        return super().__str__()
+
 
 class Bond(Asset):
     def __init__(self, price, description, duration, yieldamt):
@@ -31,6 +34,8 @@ class Bond(Asset):
         self.duration = duration
         self.yieldamt = yieldamt
 
+    def __str__(self):
+        return super().__str__()
 
 # ~~~~~~~~~ TEST CODE ~~~~~~~~~
 stocks = [

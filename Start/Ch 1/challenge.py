@@ -9,9 +9,16 @@
 # And a method get_description() which returns a string in the form
 # of "Ticker: Company -- $Price"
 
-class Stock:
-    pass
+class Stock():
+    def __init__(self, Ticker, Price, Company):
+        self.Ticker = Ticker 
+        self.Price = Price
+        self.Company = Company
 
+    def get_description(self):
+        string = self.Ticker +": " + self.Company + " -- $" + str(self.Price)
+        return string
+        
 # ~~~~~~~~~ TEST CODE ~~~~~~~~~
 msft = Stock("MSFT", 342.0, "Microsoft Corp")
 goog = Stock("GOOG", 135.0, "Google Inc")
